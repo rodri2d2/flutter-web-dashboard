@@ -17,13 +17,16 @@ class Flurorouter {
 
   static void configureRoutes() {
     //
-    // router.define(rootRoute, handler: handler)
+    router.define(rootRoute,
+        handler: AdminHandlers.root, transitionType: TransitionType.none);
 
     // Errors
     router.notFoundHandler = ErrorPageHandler.noPageFound;
 
     // Auth
-    router.define(loginRoute, handler: AdminHandlers.login);
-    router.define(loginRoute, handler: AdminHandlers.login);
+    router.define(loginRoute,
+        handler: AdminHandlers.login, transitionType: TransitionType.none);
+    router.define(registerRoute,
+        handler: AdminHandlers.register, transitionType: TransitionType.none);
   }
 }
