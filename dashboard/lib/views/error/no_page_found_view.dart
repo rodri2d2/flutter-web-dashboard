@@ -6,14 +6,12 @@ class PageNotFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(
-          '404 - Page not found',
-          style: GoogleFonts.montserratAlternates(
-            fontSize: 50,
-            fontWeight: FontWeight.bold,
-          ),
+    return Center(
+      child: Text(
+        '404 - Page not found',
+        style: GoogleFonts.montserratAlternates(
+          fontSize: 50,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

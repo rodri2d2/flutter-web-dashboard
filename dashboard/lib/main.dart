@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   Flurorouter.configureRoutes();
-  runApp(DashboardApp());
+  runApp(const DashboardApp());
 }
 
 class DashboardApp extends StatelessWidget {
@@ -22,6 +22,13 @@ class DashboardApp extends StatelessWidget {
           child: child!,
         );
       },
+      theme: ThemeData.light().copyWith(
+        scrollbarTheme: const ScrollbarThemeData().copyWith(
+          thumbColor: MaterialStateProperty.all(
+            Colors.grey.withOpacity(0.5),
+          ),
+        ),
+      ),
     );
   }
 }
