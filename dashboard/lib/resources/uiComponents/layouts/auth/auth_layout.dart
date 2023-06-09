@@ -1,5 +1,6 @@
 import 'package:dashboard/resources/uiComponents/layouts/auth/widgets/custom_title.dart';
 import 'package:dashboard/resources/uiComponents/layouts/auth/widgets/twitter_background.dart';
+import 'package:dashboard/resources/uiComponents/links_bar.dart';
 import 'package:flutter/material.dart';
 
 class AuthLayout extends StatelessWidget {
@@ -8,16 +9,21 @@ class AuthLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final layoutSize = MediaQuery.of(context).size;
+
     return Scaffold(
-        body: ListView(
-      children: [
-        // Desktop
-        _DesktopBody(
-          child: child,
-        )
-        // Mobile
-        // Links bottom bar
-      ],
+        body: Scrollbar(
+      child: ListView(
+        physics: ClampingScrollPhysics(),
+        children: [
+          // Desktop
+          (layoutSize.width > 1000)
+              ? _DesktopBody(child: child)
+              : _MobileBody(child: child),
+          // Links bottom bar
+          LinksBar()
+        ],
+      ),
     ));
   }
 }
@@ -32,7 +38,7 @@ class _DesktopBody extends StatelessWidget {
 
     return Container(
       width: size.width,
-      height: size.height,
+      height: size.height * 0.90,
       color: Colors.red,
       child: Row(
         children: [
@@ -51,6 +57,35 @@ class _DesktopBody extends StatelessWidget {
                 Expanded(child: child),
               ],
             ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _MobileBody extends StatelessWidget {
+  final Widget child;
+
+  const _MobileBody({super.key, required this.child});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(height: 20),
+          CustomTitle(),
+          Container(
+            width: double.infinity,
+            height: 420,
+            child: child,
+          ),
+          Container(
+            width: double.infinity,
+            height: 400,
+            child: TwitterBackground(),
           )
         ],
       ),
