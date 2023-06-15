@@ -1,4 +1,4 @@
-import 'package:dashboard/services/validators/imports.dart';
+import 'package:dashboard/services/validators/validation_imports.dart';
 
 /// Validates a value of type `String` as an email address.
 ///

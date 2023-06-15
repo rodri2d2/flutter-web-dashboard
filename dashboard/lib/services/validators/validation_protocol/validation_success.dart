@@ -1,4 +1,4 @@
-import 'package:dashboard/services/validators/imports.dart';
+import 'package:dashboard/services/validators/validation_imports.dart';
 
 /// It represents a successful validation result case.
 ///
