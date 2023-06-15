@@ -20,7 +20,26 @@ import 'package:dashboard/services/validators/imports.dart';
 class PasswordValidator implements Validator<String> {
   @override
   ValidationResult validate(String value) {
-    if (value.isEmpty) return ValidationError(EmptyPasswordError());
+    if (value.isEmpty) {
+      return ValidationError(EmptyPasswordError());
+    }
+
+    if (value.length < 8) {
+      return ValidationError(ShortPasswordError());
+    }
+
+    if (!value.contains(RegExp(r'[A-Z]'))) {
+      return ValidationError(NoUppercaseError());
+    }
+
+    if (!value.contains(RegExp(r'[0-9]'))) {
+      return ValidationError(NoNumberError());
+    }
+
+    if (!value.contains(RegExp(r'[!@#\$?=_]'))) {
+      return ValidationError(NoSpecialCharacterError());
+    }
+
     return ValidationSuccess('Succeed!');
   }
 }

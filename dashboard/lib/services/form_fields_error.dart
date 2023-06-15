@@ -16,9 +16,22 @@ class InvalidEmailError extends FieldError {
 }
 
 class EmptyPasswordError extends FieldError {
-  EmptyPasswordError() : super('Password must contain at least 6');
+  EmptyPasswordError() : super('Password must contain at least 6 chars');
 }
 
 class ShortPasswordError extends FieldError {
   ShortPasswordError() : super('Password is too short');
+}
+
+class NoUppercaseError extends FieldError {
+  NoUppercaseError() : super('Must contain at least one UPPER case letter');
+}
+
+class NoNumberError extends FieldError {
+  NoNumberError() : super('Must contain at least one number');
+}
+
+class NoSpecialCharacterError extends FieldError {
+  NoSpecialCharacterError()
+      : super('Must contain at least special chars !@#\$?=_');
 }
