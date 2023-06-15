@@ -7,9 +7,9 @@ import 'package:dashboard/services/validators/imports.dart';
 /// It is realy important that T must contain a property called message to send through.
 /// `description()` better use for DEBUG
 ///
-/// The `success` property contains an optional message describing the successful outcome of the validation.
+/// The `success` property contains an optional message describing the outcome of the validation.
 ///
-/// Ejemplo de uso:
+/// E.G.:
 ///
 /// ```
 /// final result = ValidationSuccess<String>('Validation succeeded');
