@@ -1,4 +1,5 @@
 import 'package:dashboard/services/validators/validation_imports.dart';
+import 'package:email_validator/email_validator.dart' as email;
 
 /// Validates a value of type `String` as an email address.
 ///
@@ -20,7 +21,8 @@ import 'package:dashboard/services/validators/validation_imports.dart';
 class EmailValidator implements Validator<String> {
   @override
   ValidationResult validate(String value) {
-    if (value.isEmpty) return ValidationError(EmptyFieldError());
-    return ValidationSuccess('Succeed!');
+    return !email.EmailValidator.validate(value)
+        ? ValidationError(InvalidEmailError())
+        : ValidationSuccess('Succeed!');
   }
 }
