@@ -11,10 +11,12 @@ class EmptyFieldError extends FieldError {
   EmptyFieldError() : super('This field cannot be empty');
 }
 
+// EMAIL
 class InvalidEmailError extends FieldError {
   InvalidEmailError() : super('Invalid email address');
 }
 
+// PASSWORD
 class EmptyPasswordError extends FieldError {
   EmptyPasswordError() : super('Password must contain at least 6 chars');
 }
@@ -34,4 +36,13 @@ class NoNumberError extends FieldError {
 class NoSpecialCharacterError extends FieldError {
   NoSpecialCharacterError()
       : super('Must contain at least special chars !@#\$?=_');
+}
+
+// NAME
+class ShortNameError extends FieldError {
+  ShortNameError() : super('Name is too short');
+}
+
+class InvalidNamelError extends FieldError {
+  InvalidNamelError() : super('People\'s name does not contain special cases');
 }
