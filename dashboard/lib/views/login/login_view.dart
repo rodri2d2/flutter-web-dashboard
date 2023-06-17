@@ -1,65 +1,108 @@
-import 'package:dashboard/resources/uiComponents/buttons/custom_outliined_button.dart';
-import 'package:dashboard/resources/uiComponents/buttons/link_text.dart';
+import '../../essencial_imports.dart';
 import 'package:dashboard/router/router.dart';
-import 'package:flutter/material.dart';
-
-import '../../resources/uiComponents/inputs/custom_input.dart';
+import 'package:dashboard/views/login/login_view_model.dart';
+import 'package:dashboard/resources/resources_imports.dart';
+import 'package:dashboard/services/validators/validation_imports.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 100),
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      color: Colors.black,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 370),
-          child: Form(
-            child: Column(children: [
-              // Email
-              TextFormField(
-                style: const TextStyle(color: Colors.white),
-                decoration: CustomInput.authInputDecoration(
-                  hint: 'Enter your email',
-                  label: 'Email',
-                  icon: Icons.email_outlined,
-                ),
-              ),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => LoginViewModel(),
+      child: Builder(builder: (context) {
+        final viewModel = Provider.of<LoginViewModel>(context, listen: true);
 
-              const SizedBox(height: 20),
+        return Container(
+          margin: const EdgeInsets.only(top: 100),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          color: Colors.black,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 370),
+              child: Form(
+                autovalidateMode: AutovalidateMode.always,
+                key: viewModel.formKey,
+                child: Column(children: [
+                  // Email
+                  _buildTextField(
+                    viewModel: viewModel,
+                    onChanged: (value) => viewModel.email = value,
+                    validator: (value) {
+                      final result =
+                          viewModel.emailValidator.validate(value ?? '');
+                      return result is ValidationSuccess
+                          ? null
+                          : (result as ValidationError).error.message;
+                    },
+                    hint: 'Enter your email',
+                    label: 'Email',
+                    icon: Icons.email_outlined,
+                  ),
 
-              // Password
-              TextFormField(
-                  obscureText: true,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: CustomInput.authInputDecoration(
+                  const SizedBox(height: 20),
+
+                  // Password
+                  _buildTextField(
+                    viewModel: viewModel,
+                    onChanged: (value) => viewModel.password = value,
+                    validator: (value) {
+                      final result =
+                          viewModel.passwordValidator.validate(value ?? '');
+                      return result is ValidationSuccess
+                          ? null
+                          : (result as ValidationError).error.message;
+                    },
                     hint: '*********',
                     label: 'Password',
                     icon: Icons.lock_outline_rounded,
-                  )),
+                    obscureText: true,
+                  ),
 
-              const SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-              CustomOutlinedButton(
-                onPressed: () => print('Login'),
-                text: 'Log in',
+                  CustomOutlinedButton(
+                    onPressed: () => viewModel.validateForm(),
+                    text: 'Log in',
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  LinkText(
+                    text: 'Create account',
+                    onPressed: () {
+                      // TODO: navigato to create new account
+                      Navigator.pushNamed(context, Flurorouter.registerRoute);
+                    },
+                  )
+                ]),
               ),
-
-              const SizedBox(height: 20),
-
-              LinkText(
-                text: 'Create account',
-                onPressed: () {
-                  // TODO: navigato to create new account
-                  Navigator.pushNamed(context, Flurorouter.registerRoute);
-                },
-              )
-            ]),
+            ),
           ),
-        ),
+        );
+      }),
+    );
+  }
+
+  TextFormField _buildTextField({
+    required LoginViewModel viewModel,
+    required ValueChanged<String> onChanged,
+    required FormFieldValidator<String>? validator,
+    required String hint,
+    required String label,
+    required IconData icon,
+    bool obscureText = false,
+  }) {
+    return TextFormField(
+      onChanged: onChanged,
+      validator: validator,
+      obscureText: obscureText,
+      style: const TextStyle(color: Colors.white),
+      decoration: CustomInput.authInputDecoration(
+        hint: hint,
+        label: label,
+        icon: icon,
       ),
     );
   }

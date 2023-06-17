@@ -26,10 +26,10 @@ class CustomOutlinedButton extends StatelessWidget {
             MaterialStateProperty.all(isFilled ? color.withOpacity(0.3) : null),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Text(
           text,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
       ),
     );
