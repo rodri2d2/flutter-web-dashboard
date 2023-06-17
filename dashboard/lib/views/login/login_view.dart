@@ -1,3 +1,5 @@
+import 'package:dashboard/services/auth/auth_service.dart';
+
 import '../../essencial_imports.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/views/login/login_view_model.dart';
@@ -9,11 +11,15 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context);
+
     return ChangeNotifierProvider(
       create: (BuildContext context) => LoginViewModel(),
       child: Builder(builder: (context) {
+        //
         final viewModel = Provider.of<LoginViewModel>(context, listen: true);
 
+        //
         return Container(
           margin: const EdgeInsets.only(top: 100),
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -63,7 +69,12 @@ class LoginView extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   CustomOutlinedButton(
-                    onPressed: () => viewModel.validateForm(),
+                    onPressed: () {
+                      final isValid = viewModel.validateForm();
+                      if (isValid) {
+                        authService.login(viewModel.email, viewModel.password);
+                      }
+                    },
                     text: 'Log in',
                   ),
 
