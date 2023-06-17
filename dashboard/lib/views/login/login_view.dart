@@ -2,7 +2,7 @@ import '../../essencial_imports.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/views/login/login_view_model.dart';
 import 'package:dashboard/resources/resources_imports.dart';
-import 'package:dashboard/services/validators/validation_imports.dart';
+import 'package:dashboard/services/handles/validators/validation_imports.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

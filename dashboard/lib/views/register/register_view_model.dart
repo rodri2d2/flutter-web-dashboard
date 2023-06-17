@@ -1,9 +1,9 @@
-import 'package:dashboard/services/validators/name_validator.dart';
+import 'package:dashboard/services/handles/validators/name_validator.dart';
 
 import '../../essencial_imports.dart';
-import '../../services/validators/validation_imports.dart';
-import 'package:dashboard/services/validators/email_validator.dart';
-import 'package:dashboard/services/validators/password_validator.dart';
+import '../../services/handles/validators/validation_imports.dart';
+import 'package:dashboard/services/handles/validators/email_validator.dart';
+import 'package:dashboard/services/handles/validators/password_validator.dart';
 
 class RegisterViewModel extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();

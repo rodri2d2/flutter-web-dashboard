@@ -2,7 +2,7 @@ import 'package:dashboard/essencial_imports.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/views/register/register_view_model.dart';
 import '../../resources/resources_imports.dart';
-import '../../services/validators/validation_imports.dart';
+import '../../services/handles/validators/validation_imports.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
