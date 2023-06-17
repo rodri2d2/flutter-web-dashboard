@@ -1,4 +1,5 @@
 import 'package:dashboard/router/admin_handlers.dart';
+import 'package:dashboard/router/dashboard_handlers.dart';
 import 'package:dashboard/router/error_page_handler.dart';
 import 'package:fluro/fluro.dart';
 
@@ -28,5 +29,8 @@ class Flurorouter {
         handler: AdminHandlers.login, transitionType: TransitionType.none);
     router.define(registerRoute,
         handler: AdminHandlers.register, transitionType: TransitionType.none);
+
+    // Dashboard
+    router.define(dashboardRoute, handler: DashboardHandlers.dashboard);
   }
 }

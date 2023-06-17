@@ -1,10 +1,33 @@
+import 'package:dashboard/essencial_imports.dart';
 import 'package:dashboard/resources/uiComponents/layouts/auth/auth_layout.dart';
+import 'package:dashboard/resources/uiComponents/layouts/dashboard_layout.dart';
+import 'package:dashboard/resources/uiComponents/layouts/splash_layout.dart';
 import 'package:dashboard/router/router.dart';
-import 'package:flutter/material.dart';
+import 'package:dashboard/services/auth/auth_service.dart';
+import 'package:dashboard/services/local_storage/local_store.dart';
+import 'package:dashboard/services/navigation_service.dart';
 
-void main() {
+void main() async {
+  await LocalStorage.configurePrefs();
   Flurorouter.configureRoutes();
-  runApp(const DashboardApp());
+  runApp(const AppState());
+}
+
+class AppState extends StatelessWidget {
+  const AppState({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (context) => AuthService(),
+        ),
+      ],
+      child: const DashboardApp(),
+    );
+  }
 }
 
 class DashboardApp extends StatelessWidget {
@@ -17,10 +40,23 @@ class DashboardApp extends StatelessWidget {
       title: 'Dashboard',
       initialRoute: '/',
       onGenerateRoute: Flurorouter.router.generator,
+      navigatorKey: NavigationService.navigatorKey,
       builder: (_, child) {
-        return AuthLayout(
-          child: child!,
-        );
+        final authProvide = Provider.of<AuthService>(context);
+
+        if (authProvide.authStatus == AuthStatus.checking) {
+          return const SplashLayout();
+        }
+
+        if (authProvide.authStatus == AuthStatus.authenticated) {
+          return DashboardLayout(child: child!);
+        } else {
+          return AuthLayout(child: child!);
+        }
+
+        // return AuthLayout(
+        //   child: child!,
+        // );
       },
       theme: ThemeData.light().copyWith(
         scrollbarTheme: const ScrollbarThemeData().copyWith(
