@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^4.0.4
   provider: ^6.0.5
   email_validator: ^2.1.17
+  shared_preferences: ^2.1.2
 
 dev_dependencies:
   flutter_test:
