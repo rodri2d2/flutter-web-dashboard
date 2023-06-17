@@ -1,4 +1,4 @@
-import '../../../essencial_imports.dart';
+import '../../essencial_imports.dart';
 
 class SplashLayout extends StatelessWidget {
   const SplashLayout({super.key});

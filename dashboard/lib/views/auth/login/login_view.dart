@@ -1,8 +1,8 @@
 import 'package:dashboard/services/auth/auth_service.dart';
 
-import '../../essencial_imports.dart';
+import '../../../essencial_imports.dart';
 import 'package:dashboard/router/router.dart';
-import 'package:dashboard/views/login/login_view_model.dart';
+import 'package:dashboard/views/auth/login/login_view_model.dart';
 import 'package:dashboard/resources/resources_imports.dart';
 import 'package:dashboard/services/handles/validators/validation_imports.dart';
 

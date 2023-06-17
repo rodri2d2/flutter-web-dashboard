@@ -1,7 +1,7 @@
 import 'package:dashboard/essencial_imports.dart';
-import 'package:dashboard/resources/uiComponents/layouts/auth/auth_layout.dart';
-import 'package:dashboard/resources/uiComponents/layouts/dashboard_layout.dart';
-import 'package:dashboard/resources/uiComponents/layouts/splash_layout.dart';
+import 'package:dashboard/views/auth/auth_layout.dart';
+import 'package:dashboard/views/dashboard/dashboard_layout.dart';
+import 'package:dashboard/views/loading/splash_layout.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/services/auth/auth_service.dart';
 import 'package:dashboard/services/local_storage/local_store.dart';
