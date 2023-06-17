@@ -17,4 +17,9 @@
 <img src="https://github.com/rodri2d2/flutter-web-dashboard/blob/feature/create-form-handles-to-register/DEMOS/register_validation.gif" width="300" />
 </p>
 
+### Login Auth 
+<p>
+<img src="https://github.com/rodri2d2/flutter-web-dashboard/blob/feature/create-form-handles-to-register/DEMOS/register_validation.gif" width="300" />
+</p>
+
 
