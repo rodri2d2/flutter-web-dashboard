@@ -1,4 +1,5 @@
-import '../../../essencial_imports.dart';
+import '../../essencial_imports.dart';
+import '../../resources/resources_imports.dart';
 
 class DashboardLayout extends StatelessWidget {
   final Widget child;
@@ -8,16 +9,13 @@ class DashboardLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Deshboard layout',
-            style: TextStyle(fontSize: 50),
-          ),
-          Expanded(child: child)
-        ],
-      ),
+      body: Row(children: [
+        // TODO: Side bar should appear only if it is bigger than 700px
+        SideBar(),
+
+        // Main View container
+        Expanded(child: child),
+      ]),
     );
   }
 }
