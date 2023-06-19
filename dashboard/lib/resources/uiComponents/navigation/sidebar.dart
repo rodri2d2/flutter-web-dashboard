@@ -13,8 +13,15 @@ class SideBar extends StatelessWidget {
       child: ListView(
         physics: ClampingScrollPhysics(),
         children: [
-          Logo(),
-          SizedBox(height: 50),
+          const Logo(),
+          const SizedBox(height: 50),
+          const TextSeparator(text: 'Main'),
+          MenuItem(
+            text: 'Dashboard',
+            icon: Icons.compass_calibration_outlined,
+            onpress: () => print('Dashboard item'),
+            isActive: false,
+          )
         ],
       ),
     );
