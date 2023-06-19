@@ -13,8 +13,17 @@ class DashboardLayout extends StatelessWidget {
         // TODO: Side bar should appear only if it is bigger than 700px
         SideBar(),
 
-        // Main View container
-        Expanded(child: child),
+        Expanded(
+          child: Column(
+            children: [
+              // Nav var
+              NavBar(),
+
+              // Main View container
+              Expanded(child: child),
+            ],
+          ),
+        )
       ]),
     );
   }

@@ -5,3 +5,5 @@ export 'package:dashboard/resources/uiComponents/navigation/sidebar.dart';
 export 'package:dashboard/resources/uiComponents/static_elements/logo.dart';
 export 'package:dashboard/resources/uiComponents/static_elements/text_separator.dart';
 export 'package:dashboard/resources/uiComponents/navigation/menu_item.dart';
+export 'package:dashboard/resources/uiComponents/navigation/navbar.dart';
+export 'package:dashboard/resources/uiComponents/inputs/search_field.dart';
