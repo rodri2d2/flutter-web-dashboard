@@ -1,3 +1,5 @@
+import 'package:dashboard/services/animations/side_menu_service.dart';
+
 import '../../../essencial_imports.dart';
 import '../../resources_imports.dart';
 
@@ -6,26 +8,38 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    //
     return Container(
       width: double.infinity,
       height: 50,
       decoration: _buildDecoration(),
       child: Row(children: [
-        // TODO: Handle icon when is on small screen and click
-        IconButton(
-          icon: Icon(Icons.menu_outlined),
-          onPressed: () {},
-        ),
+        if (size.width <= 700)
+          IconButton(
+            icon: Icon(Icons.menu_outlined),
+            onPressed: () {
+              SideMenuService.openMenu();
+            },
+          ),
+
+        //
         SizedBox(width: 5),
 
-        ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 250),
-          child: SearchField(),
-        ),
+        //
+        if (size.width > 440)
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 250),
+            child: SearchField(),
+          ),
 
         Spacer(),
 
+        //
         NotificationIndicator(),
+
+        //
         SizedBox(width: 10),
         NavbarAvatar(),
         SizedBox(width: 10)

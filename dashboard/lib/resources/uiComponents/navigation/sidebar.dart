@@ -1,4 +1,5 @@
 import 'package:dashboard/resources/resources_imports.dart';
+import 'package:dashboard/services/animations/side_menu_service.dart';
 import '../../../essencial_imports.dart';
 
 class SideBar extends StatelessWidget {
@@ -20,7 +21,7 @@ class SideBar extends StatelessWidget {
               text: 'Dashboard',
               icon: Icons.compass_calibration_outlined,
               isActive: false,
-              onpress: () {}),
+              onpress: () => SideMenuService.closeMenu()),
           MenuItem(
               text: 'Orders',
               icon: Icons.shopping_cart_outlined,
