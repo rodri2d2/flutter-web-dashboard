@@ -7,3 +7,5 @@ export 'package:dashboard/resources/uiComponents/static_elements/text_separator.
 export 'package:dashboard/resources/uiComponents/navigation/menu_item.dart';
 export 'package:dashboard/resources/uiComponents/navigation/navbar.dart';
 export 'package:dashboard/resources/uiComponents/inputs/search_field.dart';
+export 'package:dashboard/resources/uiComponents/buttons/notifications_indicators.dart';
+export 'package:dashboard/resources/uiComponents/buttons/navbar_avatar.dart';

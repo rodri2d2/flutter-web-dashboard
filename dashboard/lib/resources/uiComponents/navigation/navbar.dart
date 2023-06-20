@@ -21,7 +21,14 @@ class NavBar extends StatelessWidget {
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 250),
           child: SearchField(),
-        )
+        ),
+
+        Spacer(),
+
+        NotificationIndicator(),
+        SizedBox(width: 10),
+        NavbarAvatar(),
+        SizedBox(width: 10)
       ]),
     );
   }
