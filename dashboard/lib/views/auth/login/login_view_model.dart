@@ -1,8 +1,8 @@
 import 'package:dashboard/services/auth/auth_service.dart';
 import 'package:dashboard/services/handles/validators/password_validator.dart';
 import 'package:flutter/material.dart';
-import '../../services/handles/validators/email_validator.dart';
-import '../../services/handles/validators/validation_protocol/validator.dart';
+import '../../../services/handles/validators/email_validator.dart';
+import '../../../services/handles/validators/validation_protocol/validator.dart';
 
 class LoginViewModel extends ChangeNotifier {
   //

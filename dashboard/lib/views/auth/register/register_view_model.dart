@@ -1,7 +1,7 @@
 import 'package:dashboard/services/handles/validators/name_validator.dart';
 
-import '../../essencial_imports.dart';
-import '../../services/handles/validators/validation_imports.dart';
+import '../../../essencial_imports.dart';
+import '../../../services/handles/validators/validation_imports.dart';
 import 'package:dashboard/services/handles/validators/email_validator.dart';
 import 'package:dashboard/services/handles/validators/password_validator.dart';
 

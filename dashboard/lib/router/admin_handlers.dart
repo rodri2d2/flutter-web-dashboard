@@ -1,8 +1,8 @@
 import 'package:dashboard/essencial_imports.dart';
 import 'package:dashboard/services/auth/auth_service.dart';
 import 'package:dashboard/views/dashboard/dashboard_view.dart';
-import 'package:dashboard/views/login/login_view.dart';
-import 'package:dashboard/views/register/register_view.dart';
+import 'package:dashboard/views/auth/login/login_view.dart';
+import 'package:dashboard/views/auth/register/register_view.dart';
 import 'package:fluro/fluro.dart';
 
 class AdminHandlers {

@@ -1,9 +1,9 @@
-import 'package:dashboard/resources/resources_imports.dart';
+import 'package:dashboard/essencial_imports.dart';
 
-import '../../essencial_imports.dart';
+import '../../resources/resources_imports.dart';
 
-class DashboardView extends StatelessWidget {
-  const DashboardView({super.key});
+class BlankView extends StatelessWidget {
+  const BlankView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class DashboardView extends StatelessWidget {
         physics: const ClampingScrollPhysics(),
         children: [
           Text(
-            'Dashboard view',
+            'Blank view',
             style: CustomLabels.h1,
           ),
           SizedBox(height: 10),

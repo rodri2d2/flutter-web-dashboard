@@ -21,3 +21,9 @@
 <p>
 <img src="https://github.com/rodri2d2/flutter-web-dashboard/blob/feature/auth-handler/DEMOS/auth_to_dashboard.gif" width="300" />
 </p>
+
+### Dashboard view and navigation
+<p>
+<img src="https://github.com/rodri2d2/flutter-web-dashboard/blob/feature/create-dashboard/DEMOS/dashboard_view.gif" width="300" />
+</p>
+
