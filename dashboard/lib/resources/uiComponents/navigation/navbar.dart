@@ -1,4 +1,4 @@
-import 'package:dashboard/services/animations/side_menu_service.dart';
+import 'package:dashboard/views/sidebar/sidebar_view_model.dart';
 
 import '../../../essencial_imports.dart';
 import '../../resources_imports.dart';
@@ -20,7 +20,7 @@ class NavBar extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.menu_outlined),
             onPressed: () {
-              SideMenuService.openMenu();
+              SideBarViewModel.openMenu();
             },
           ),
 

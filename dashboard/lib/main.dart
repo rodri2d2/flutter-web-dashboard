@@ -1,4 +1,5 @@
 import 'package:dashboard/essencial_imports.dart';
+import 'package:dashboard/views/sidebar/sidebar_view_model.dart';
 import 'package:dashboard/views/auth/auth_layout.dart';
 import 'package:dashboard/views/dashboard/dashboard_layout.dart';
 import 'package:dashboard/views/loading/splash_layout.dart';
@@ -23,6 +24,10 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(
           lazy: false,
           create: (context) => AuthService(),
+        ),
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (context) => SideBarViewModel(),
         ),
       ],
       child: const DashboardApp(),

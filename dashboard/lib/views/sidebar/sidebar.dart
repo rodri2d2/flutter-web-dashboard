@@ -1,12 +1,16 @@
 import 'package:dashboard/resources/resources_imports.dart';
-import 'package:dashboard/services/animations/side_menu_service.dart';
-import '../../../essencial_imports.dart';
+import 'package:dashboard/router/router.dart';
+import 'package:dashboard/services/navigation_service.dart';
+import 'package:dashboard/views/sidebar/sidebar_view_model.dart';
+import '../../essencial_imports.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final sideMenuService = Provider.of<SideBarViewModel>(context);
+
     return Container(
       width: 200,
       height: double.infinity,
@@ -20,8 +24,9 @@ class SideBar extends StatelessWidget {
           MenuItem(
               text: 'Dashboard',
               icon: Icons.compass_calibration_outlined,
-              isActive: false,
-              onpress: () => SideMenuService.closeMenu()),
+              isActive:
+                  sideMenuService.currentPage == Flurorouter.dashboardRoute,
+              onpress: () => navigateTo(Flurorouter.dashboardRoute)),
           MenuItem(
               text: 'Orders',
               icon: Icons.shopping_cart_outlined,
@@ -57,8 +62,9 @@ class SideBar extends StatelessWidget {
           MenuItem(
               text: 'Icons',
               icon: Icons.list_alt_outlined,
-              isActive: false,
-              onpress: () {}),
+              isActive:
+                  sideMenuService.currentPage == Flurorouter.dashboardIconRoute,
+              onpress: () => navigateTo(Flurorouter.dashboardIconRoute)),
           MenuItem(
               text: 'Marketing',
               icon: Icons.mark_email_read_outlined,
@@ -72,8 +78,11 @@ class SideBar extends StatelessWidget {
           MenuItem(
               text: 'Black',
               icon: Icons.post_add_outlined,
-              isActive: false,
-              onpress: () {}),
+              isActive:
+                  sideMenuService.currentPage == Flurorouter.dashboardBlank,
+              onpress: () => navigateTo(Flurorouter.dashboardBlank)),
+          const SizedBox(height: 50),
+          const TextSeparator(text: 'Authentication'),
           MenuItem(
               text: 'Log out',
               icon: Icons.exit_to_app_outlined,
@@ -92,4 +101,9 @@ class SideBar extends StatelessWidget {
           boxShadow: [
             BoxShadow(color: Colors.black38, blurRadius: 10),
           ]);
+
+  void navigateTo(String routeName) {
+    NavigationService.navigateTo(routeName);
+    SideBarViewModel.closeMenu();
+  }
 }

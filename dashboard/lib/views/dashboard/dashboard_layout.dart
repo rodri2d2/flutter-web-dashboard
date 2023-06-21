@@ -1,5 +1,4 @@
-import 'package:dashboard/services/animations/side_menu_service.dart';
-
+import 'package:dashboard/views/sidebar/sidebar_view_model.dart';
 import '../../essencial_imports.dart';
 import '../../resources/resources_imports.dart';
 
@@ -19,7 +18,7 @@ class _DashboardLayoutState extends State<DashboardLayout>
     // TODO: implement initState
     super.initState();
 
-    SideMenuService.menuController =
+    SideBarViewModel.menuController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
   }
 
@@ -42,7 +41,10 @@ class _DashboardLayoutState extends State<DashboardLayout>
                     NavBar(),
 
                     // Main View container
-                    Expanded(child: widget.child),
+                    Expanded(
+                        child: Container(
+                      child: widget.child,
+                    )),
                   ],
                 ),
               )
@@ -50,15 +52,15 @@ class _DashboardLayoutState extends State<DashboardLayout>
           ),
           if (size.width < 700)
             AnimatedBuilder(
-                animation: SideMenuService.menuController,
+                animation: SideBarViewModel.menuController,
                 builder: (context, _) => Stack(
                       children: [
                         //
-                        if (SideMenuService.isOpen)
+                        if (SideBarViewModel.isOpen)
                           Opacity(
-                            opacity: SideMenuService.opcacity.value,
+                            opacity: SideBarViewModel.opcacity.value,
                             child: GestureDetector(
-                              onTap: () => SideMenuService.closeMenu(),
+                              onTap: () => SideBarViewModel.closeMenu(),
                               child: Container(
                                 width: size.width,
                                 height: size.height,
@@ -69,7 +71,7 @@ class _DashboardLayoutState extends State<DashboardLayout>
 
                         //
                         Transform.translate(
-                          offset: Offset(SideMenuService.movement.value, 0),
+                          offset: Offset(SideBarViewModel.movement.value, 0),
                           child: SideBar(),
                         )
                       ],
